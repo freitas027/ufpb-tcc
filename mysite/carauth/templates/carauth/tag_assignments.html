@@ -1,0 +1,45 @@
+{% extends 'carauth/base.html' %}
+{% block 'body' %}
+<h2>Histórico de Autenticações</h2>
+<p></p>
+<div class="table-wrapper">
+	<table>
+		<thead>
+			<tr>
+				<th>Tag</th>
+				<th>UID</th>
+				<th>Usuário</th>
+				<th>Inicio</th>
+				<th>Fim</th>
+				<th>Válido</th>
+				
+			</tr>
+		</thead>
+		<tbody>
+			{% for tagas in tagass %}
+				<tr>
+					<th>{{ tagas.tag.id }}</th>
+					<th>{{ tagas.tag.uid }}</th>
+					<th>{{ tagas.user }}</th>
+					<th>{{ tagas.begin }}</th>
+					<th>{{ tagas.end }}</th>
+					{% if tagas.is_valid %}
+					<th>Sim</th>
+					{% else %}
+					<th>Não</th>
+					{% endif %}
+				</tr>
+			{% endfor %}
+		</tbody>
+	</table>
+</div>
+<ul class="pagination">
+	{% for p in page_range %}
+	{% if p == page %}
+	<li><a href="{% url 'view-assignments' page=p %}" class="page active"> {{ p }} </a></li>
+	{% else %}
+	<li><a href="{% url 'view-assignments' page=p %}" class="page">{{ p }}</a></li>
+	{% endif %}
+	{% endfor %}
+</ul>
+{% endblock %}

@@ -1,0 +1,46 @@
+{% extends 'carauth/base.html' %}
+{% block 'body' %}
+<h2>Histórico de Autenticações</h2>
+<h4>Passe o mouse sobre as cédulas das colunas "Usuário" e "Leitor" para obter informações relacionadas.</h4>
+<div class="table-wrapper">
+	<table>
+		<thead>
+			<tr>
+				<th>Usuário</th>
+				<th>Leitor</th>
+				<th>Data e hora</th>
+				<th>Autorizado</th>
+				<th>Historico de Localização</th>
+			</tr>
+		</thead>
+		<tbody>
+			{% for login, ard_assign, tag_assign, link in ah %}
+				<tr>
+
+					{% if tag_assign %}
+					<th title="ID Tag: {{ login.tag.id }}">{{ tag_assign.user }}</th>
+					{% else %}
+					<th title="Tag UID: {{ login.tag.uid }}">Tag {{ login.tag.id }}</th>
+					{% endif %}
+
+					{% if ard_assign %}
+					<th title="ID Leitor: {{ login.arduino.id }}">Veículo {{ ard_assign.car.license_plate }}</th>
+					{% else %}
+					<th title="{{ login.arduino.arduino_mac }}">{{ login.arduino.id }}</th>
+					{% endif %}
+
+					<th>{{ login.time }}</th>
+
+					{% if login.successful %}
+					<th>Sim</th>
+					{% else %}
+					<th>Não</th>
+					{% endif %}
+
+					<th><a href="{{ link }}"target="_blank">Clique aqui</a></th>
+				</tr>
+			{% endfor %}
+		</tbody>
+	</table>
+</div>
+{% endblock %}

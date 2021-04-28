@@ -1,0 +1,74 @@
+<!DOCTYPE HTML>
+<!--
+	Editorial by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	{% load static %}
+	<head>
+		<title>Autenticação de Carros</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="{% static "carauth/assets/css/main.css" %}" />
+	</head>
+	<body class="is-preload">
+
+		<!-- Wrapper -->
+			<div id="wrapper">
+				<div id="main">
+					<div class="inner">
+						<section id="banner">
+							<div class="content">
+								<header>
+									{% block 'body' %}
+									{% endblock %}
+								</header>
+							</div>
+						</section>
+					</div>
+				</div>
+				<div id="sidebar">
+					<div class="inner">
+						<nav id="menu">
+							<header class="major">
+								<h2>Menu</h2>
+							</header>
+							<ul>
+								<li><a href="{% url 'index' %}">Histórico</a></li>
+								<li><a href="{% url 'user' %}">Adicionar Usuário</a></li>
+								<li><a href="{% url 'register' %}">Associar Tag</a></li>
+								<li><a href="{% url 'remove-assign' %}">Remover Associação de Tag</a></li>
+								<li><a href="{% url 'new-car' %}">Registrar Carro</a></li>
+								<li><a href="{% url 'new-ard-assign' %}">Associar Leitor</a></li>
+								<li><a href="{% url 'remove-reader-assignment' %}">Remover Associação de Leitor</a></li>
+								<li><a href="{% url 'logout' %}">Logout</a></li>
+
+
+								<!--li>
+									<span class="opener">Administração</span>
+									<ul>
+										<li><a href="{% url 'user' %}">Adicionar Usuário</a></li>
+										<li><a href="{% url 'register' %}">Associar Tag</a></li>
+										<li><a href="{% url 'remove-assign' %}">Remover Associação</a></li>
+										<li><a href="{% url 'new-ard-assign' %}">Associar Leitor</a></li>
+									</ul-->
+								</li>
+							</ul>
+						</nav>
+					</div>
+				</div>
+
+
+			</div>
+
+		<!-- Scripts -->
+			<script src="{% static "carauth/assets/js/jquery.min.js" %}"></script>
+			<script src="{% static "carauth/assets/js/breakpoints.min.js" %}"></script>
+			<script src="{% static "carauth/assets/js/util.js" %}"></script>
+			<script src="{% static "carauth/assets/js/browser.min.js" %}"></script>
+			<script src="{% static "carauth/assets/js/main.js" %}"></script>
+
+
+	</body>
+</html>
